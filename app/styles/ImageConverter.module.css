@@ -1,0 +1,378 @@
+.converterContainer {
+    padding: 20px;
+    
+  }
+  
+  .previewContainer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .imagePreview {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .convertButton {
+    display: block;
+    width: 100%;
+  }
+  
+  .progressBar {
+    margin-top: 10px;
+  }
+  
+  .result {
+    text-align: center;
+  }
+  
+  .formatLinks {
+    margin-top: 40px;
+  }
+  
+  .linksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .formatLink {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+  }
+  
+  .formatLink:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .result {
+    text-align: center; /* Optional: Center-align content */
+  }
+  
+  .result img {
+    display: block; /* Ensure image is a block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+    max-width: 100%; /* Make sure image is responsive */
+    height: auto;
+  }
+  
+  .result .btn {
+    display: block; /* Ensure button is a block-level element */
+    margin: 1rem auto; /* Center the button horizontally and add spacing */
+  }
+  
+  /* ImageConverter.module.css */
+
+.converterContainer {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.previewContainer {
+  margin-top: 20px;
+}
+
+.previewGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.imageBox {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.imagePreview {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.imageButtons {
+  margin-top: 10px;
+}
+
+.formatLinks {
+  margin-top: 30px;
+}
+
+.linksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.formatLink {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.formatLink:hover {
+  background-color: #0056b3;
+}
+
+
+/* Add these styles to your CSS file */
+
+.modal-header {
+  background-color: #f8f9fa; /* Light background for header */
+  border-bottom: 1px solid #dee2e6; /* Light border below header */
+  padding: 1rem 1.5rem; /* Adjust padding */
+}
+
+.modal-title {
+  font-size: 1.25rem; /* Slightly larger title */
+  color: #343a40; /* Darker text color */
+}
+
+.modal-body {
+  padding: 1.5rem 1.5rem; /* More padding for the body */
+}
+
+.img-fluid {
+  max-width: 100%; /* Ensure image scales within modal */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 0.5rem; /* Rounded corners for image */
+}
+
+.modal-footer {
+  background-color: #f8f9fa; /* Light background for footer */
+  border-top: 1px solid #dee2e6; /* Light border above footer */
+  padding: 1rem 1.5rem; /* Adjust padding */
+  display: flex; /* Align items horizontally */
+  justify-content: flex-end; /* Align button to the right */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Custom background color */
+  border-color: #6c757d; /* Match border color */
+  color: #fff; /* White text color */
+  font-weight: 500; /* Slightly bolder text */
+  border-radius: 0.25rem; /* Rounded corners for button */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker background on hover */
+  border-color: #545b62; /* Darker border on hover */
+}
+/* Preview.module.css */
+
+/* Preview.module.css */
+
+.previewContainer {
+  padding: 20px;
+}
+
+.previewGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.imageBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%; /* Ensures the imageBox takes the full width of its container */
+}
+.imageBox h5 {
+  margin: 0;
+  flex: 1; /* Allows the h5 to take available space */
+  text-align: left; /* Ensures the h5 is left-aligned */
+}
+
+
+.progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #f3f3f3; /* Light gray background for the progress container */
+}
+
+.progressBar {
+  background-color: #007bff; /* Bootstrap's primary color */
+  height: 100%;
+  border-radius: 5px;
+}
+
+.imageButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.imageButtons button {
+  flex: 1;
+}
+
+.textSuccess {
+  color: #28a745;
+}
+
+.mt2 {
+  margin-top: 10px;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .previewGrid {
+    flex-direction: column;
+  }
+
+  .imageBox {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: stretch; /* Stretch the elements to fit the width */
+  }
+
+  .imageButtons {
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  .imageButtons button {
+    width: 100%; /* Ensure buttons take full width on mobile */
+  }
+}
+
+.converterContainer {
+  padding: 20px;
+}
+
+.previewContainer {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.imagePreview {
+  max-width: 100%;
+  height: auto;
+}
+
+.convertButton {
+  display: block;
+  width: 100%;
+}
+
+.progressBar {
+  margin-top: 10px;
+}
+
+.result {
+  text-align: center;
+}
+
+.formatLinks {
+  margin-top: 40px;
+}
+
+.linksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.formatLink {
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.formatLink:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.heading-text {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ffffff; /* White text to stand out on gradient background */
+  background: linear-gradient(90deg, #1e3c72, #2a5298); /* Blue gradient */
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+
+/* Headings */
+.heading-image-h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #007bff !important;  /* Ensure blue color applies */
+  font-weight: 700;
+}
+
+.heading-image-h2 {
+  font-size: 2.5rem;
+  color: #007bff !important;  /* Ensure blue color applies */
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+
+/* ImageConverter.module.css */
+.fileInputContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.fileInputButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.fileInputButton:hover {
+  background-color: #0056b3; /* Darker blue */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fileInputButton:active {
+  background-color: #003d7a; /* Even darker blue for active state */
+}
+
+.fileInput {
+  display: none; /* Hide the actual file input */
+}

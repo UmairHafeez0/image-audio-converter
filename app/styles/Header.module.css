@@ -1,0 +1,90 @@
+.header {
+    background-color: #f8f9fa; /* Light grey background color */
+    color: #343a40; /* Dark text color for better contrast */
+    padding: 1rem; /* Padding for spacing */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbarBrand {
+    display: flex;
+    align-items: center;
+    color: #343a40;
+    text-decoration: none;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+  
+  .navbarLinks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbarLink {
+    color: #343a40;
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  
+  .navbarLink:hover {
+    color: #007bff; /* Optional: Add hover effect */
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdownToggle {
+    color: #343a40;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+  
+  .dropdownMenu.show {
+    display: block;
+  }
+  
+  .dropdownItem {
+    padding: 0.5rem 1rem;
+    color: #343a40;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #e9ecef; /* Optional: Add hover effect */
+  }
+  
+  .dropdownHeader {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    color: #343a40;
+  }
+  
+  .dropdownDivider {
+    border-top: 1px solid #dee2e6;
+  }
+  

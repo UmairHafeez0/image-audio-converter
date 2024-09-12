@@ -1,27 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Global style for all anchor tags */
+a {
+    text-decoration: none; /* Removes the underline by default */
+    color: inherit; /* Inherits the text color from its parent */
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  
+  /* Style for links on hover */
+  a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+    color: #0d6efd; /* Change color on hover (optional) */
   }
-}
+  
+  /* Optional: Apply to specific links in the navbar */
+  .navbar-nav .nav-link {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Inherit color from parent */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    text-decoration: underline; /* Adds underline on hover */
+    color: #0d6efd; /* Change color on hover (optional) */
+  }
+  
+
+
+
+  /* header */
+
+  .dropdown-item {
+    display: none; 
+      }
+  .dropdown-menu {
+    display: none; /* Hide dropdown items by default */
+    opacity: 0; /* Set opacity to 0 for a smooth transition */
+    transition: opacity 0.3s ease; /* Add transition for smooth visibility */
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown items when hovering over the dropdown */
+    opacity: 1; /* Set opacity to 1 for smooth visibility */
+  }
+  
+
+  .dropdown-header:hover .dropdown-item{
+    display: block; /* Show dropdown items when hovering over the dropdown */
+    opacity: 1;
+  }

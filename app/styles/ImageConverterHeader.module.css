@@ -1,0 +1,259 @@
+.backgroundColorMatch {
+  background: #ffffff; /* Dark gradient */
+  position: relative;
+  padding: 40px 0; /* Extra padding for cleaner layout */
+}
+
+.contentContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversionOptions {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  width: 200px; /* Adjust width */
+  height: 50px; /* Adjust height */
+  margin: 20px; /* Add margin around the dropdown */
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: #5a5a5c;
+}
+
+.dropdownContent,
+.dropdownContentActive {
+
+  position: absolute;
+  width: 250px; /* Increase size */
+  padding: 10px; /* Add padding */
+  background-color: #f9f9f9; /* Light background */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Add shadow */
+  border-radius: 8px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.dropdownContentActive {
+  display: block;
+}
+
+.subDropdown,
+.subDropdownActive {
+  
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%; /* Ensure it takes full width */
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+
+
+.subDropdownActive {
+  display: block;
+}
+
+.dropdownItem {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+
+.subDropdownContent {
+  padding: 12px;
+}
+
+.formatBox {
+  display: inline-block;
+  padding: 10px 14px;
+  margin: 5px;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.formatBox:hover {
+  background-color: #5a5a5c;
+  color: white;
+}
+
+.active {
+  background-color: #4a4a4b;
+  color: white;
+}
+
+
+
+.convertButton {
+  background-color: #4a4a4b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.convertButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.convertButton:hover:not(:disabled) {
+  background-color: #5a5a5c;
+}
+
+
+
+
+
+
+
+.dropdownContent {
+  position: absolute;
+  width: 250px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.subDropdown {
+  position: absolute;
+  top: 0;
+  left: 100%; /* Position to the right by default */
+  width: 250px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.subDropdownActive {
+  display: block;
+}
+
+.subDropdown.adjustLeft {
+  left: auto;
+  right: 100%; /* If it overflows, position to the left */
+}
+
+.dropdown.adjustTop {
+  bottom: 100%;
+  top: auto; /* Move dropdown upwards if overflowing the screen bottom */
+}
+
+.subDropdown.adjustTop {
+  bottom: 100%;
+  top: auto; /* Move sub-dropdown upwards if overflowing */
+}
+
+
+.conversionOptions {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownMenu {
+  margin-right: 5px; /* Adjust this value as per your preference */
+}
+
+.form-label-convert {
+  margin-left: 5px; /* This controls the margin between the dropdown and the 'To' label */
+  font-size: 16px;  /* Optionally adjust font size */
+}
+
+.dropdown {
+  margin-right: 5px; /* Adjust spacing between dropdowns */
+}
+
+
+
+/**************************/
+
+
+.headerContainer {
+  width: 400px;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: left; /* Left align text */
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 0;
+  line-height: 1.6; /* Adjust line-height for readability */
+  max-width: 400px; /* Adjust this width for approximately 6 words per line */
+  word-wrap: break-word;
+}
+
+@media (max-width: 1000px) {
+  .header {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+  
+  .headerContainer {
+    width: 100%; /* Use full width on mobile */
+    text-align: left; /* Ensure text is left aligned */
+  }
+
+  .description {
+    width: 100%; /* Take full width */
+    max-width: none; /* Remove max-width restriction */
+    text-align: left; /* Ensure text is left aligned */
+  }
+}
+

@@ -1,0 +1,55 @@
+/* Preview.module.css */
+
+.previewContainer {
+    padding: 20px;
+  }
+  
+  .previewGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .imageBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .imageBox h5 {
+    margin: 0;
+  }
+  
+  .progress {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #f3f3f3; /* Light gray background for the progress container */
+  }
+  
+  .progressBar {
+    background-color: #007bff; /* Bootstrap's primary color */
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  .imageButtons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .imageButtons button {
+    flex: 1;
+  }
+  
+  .textSuccess {
+    color: #28a745;
+  }
+  
+  .mt2 {
+    margin-top: 10px;
+  }
+  
