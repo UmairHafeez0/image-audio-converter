@@ -1,10 +1,56 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 
 interface ImageConverterProps {
   format: string;
 }
 
+// Inside component
+const handleDownloadAll = async () => {
+  if (!convertedImages || convertedImages.size === 0) {
+    alert("No images available for download.");
+    return;
+  }
+  
+  const zip = new JSZip();
+  const fileExtension = `.${formatString}`;
+
+  const promises = Array.from(convertedImages.entries()).map(([originalFileName, url]) => {
+    const fileName = originalFileName.replace(/\.[^/.]+$/, fileExtension); 
+    return fetch(url)
+      .then((response) => response.blob())
+      .then((blob) => {
+        zip.file(fileName, blob);
+      });
+  });
+  
+  try {
+    await Promise.all(promises);
+    const content = await zip.generateAsync({ type: "blob" });
+    saveAs(content, `converted-images.${formatString}.zip`);
+  } catch (error) {
+    console.error("ZIP creation error:", error);
+    alert("Failed to create ZIP file. Please try again.");
+  }
+};
+
+const handleDownload = (image: string) => {
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = `converted.${formatString}`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+// Add to return JSX
+{convertedImages && convertedImages.size > 0 && (
+  <button onClick={handleDownloadAll}>
+    Download All
+  </button>
+)}
 const ImageConverter: React.FC<ImageConverterProps> = ({ format }) => {
   // Previous state remains
   const [convertedImages, setConvertedImages] = useState<Map<string, string>>(); 
