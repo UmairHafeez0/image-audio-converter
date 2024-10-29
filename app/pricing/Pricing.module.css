@@ -1,0 +1,33 @@
+/* Pricing Page Specific Styles */
+.card {
+  border: none; /* Remove default border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.table td {
+  color: #555;
+}
+
+.accordion-button {
+  background-color: #007bff; /* Primary color */
+  color: #fff;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #0056b3; /* Darker shade for active state */
+}
+
+.accordion-body {
+  background-color: #f1f1f1;
+}
