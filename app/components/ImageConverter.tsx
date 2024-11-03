@@ -1,126 +1,141 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import JSZip from "jszip";
-import { saveAs } from "file-saver";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 interface ImageConverterProps {
   format: string;
 }
 
-// Inside component
-const handleDownloadAll = async () => {
-  if (!convertedImages || convertedImages.size === 0) {
-    alert("No images available for download.");
-    return;
-  }
-  
-  const zip = new JSZip();
-  const fileExtension = `.${formatString}`;
-
-  const promises = Array.from(convertedImages.entries()).map(([originalFileName, url]) => {
-    const fileName = originalFileName.replace(/\.[^/.]+$/, fileExtension); 
-    return fetch(url)
-      .then((response) => response.blob())
-      .then((blob) => {
-        zip.file(fileName, blob);
-      });
-  });
-  
-  try {
-    await Promise.all(promises);
-    const content = await zip.generateAsync({ type: "blob" });
-    saveAs(content, `converted-images.${formatString}.zip`);
-  } catch (error) {
-    console.error("ZIP creation error:", error);
-    alert("Failed to create ZIP file. Please try again.");
-  }
-};
-
-const handleDownload = (image: string) => {
-  const link = document.createElement("a");
-  link.href = image;
-  link.download = `converted.${formatString}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
-// Add to return JSX
-{convertedImages && convertedImages.size > 0 && (
-  <button onClick={handleDownloadAll}>
-    Download All
-  </button>
-)}
 const ImageConverter: React.FC<ImageConverterProps> = ({ format }) => {
-  // Previous state remains
+  const formatString = format || "jpg"; 
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [filePreviews, setFilePreviews] = useState<Map<string, string>>();
   const [convertedImages, setConvertedImages] = useState<Map<string, string>>(); 
-  const [progress, setProgress] = useState<number>(0);
-  const [totalFiles, setTotalFiles] = useState<number>(0); 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showPreview, setShowPreview] = useState<boolean>(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewName, setPreviewName] = useState<string | null>(null);
 
-  const handleConversion = async () => {
-    if (selectedFiles.length === 0) {
-      return alert("Please upload at least one image file first!");
-    }
-  
-    const formData = new FormData();
-    selectedFiles.forEach((file) => formData.append("files", file));
-    formData.append("format", formatString);
-  
-    try {
-      setLoading(true);
-      setProgress(0);
-      setTotalFiles(selectedFiles.length);
-  
-      const response = await fetch(
-        "http://localhost:3030/image-converter-all",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-  
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-  
-      const data = await response.json();
-      const imageMap = new Map<string, string>();
+  useEffect(() => {
+    if (selectedFiles.length > 0) {
+      const previews = new Map<string, string>();
       selectedFiles.forEach((file) => {
-        const fileName = file.name;
-        if (data.convertedFileUrls[fileName]) {
-          imageMap.set(fileName, data.convertedFileUrls[fileName]);
-        }
+        const fileUrl = URL.createObjectURL(file);
+        previews.set(file.name, fileUrl);
       });
-      setConvertedImages(imageMap);
-  
-      const totalSteps = 100;
-      let step = 0;
-  
-      const interval = setInterval(() => {
-        if (step >= totalSteps) {
-          clearInterval(interval);
-          setProgress(100); 
-        } else {
-          step += Math.ceil(totalSteps / selectedFiles.length);
-          setProgress(step);
-        }
-      }, 500); 
-  
-    } catch (error) {
-      console.error("Conversion error:", error);
-      setError("Failed to convert images. Please try again.");
-    } finally {
-      setLoading(false);
+      setFilePreviews(previews);
+      return () => previews.forEach((url) => URL.revokeObjectURL(url));
     }
+  }, [selectedFiles]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setSelectedFiles(Array.from(event.target.files));
+      setError(null);
+    }
+  };
+
+  const handlePreviewClick = (
+    image: string,
+    imageName: string,
+    isConverted: boolean,
+    convertedImageUrl: string
+  ) => {
+    if (isConverted) {
+      const nameWithoutExtension = imageName.substring(
+        0,
+        imageName.lastIndexOf(".")
+      );
+      setPreviewName(`${nameWithoutExtension}.${formatString}`);
+      setPreviewImage(convertedImageUrl);
+    } else {
+      setPreviewName(imageName);
+      setPreviewImage(image);
+    }
+    setShowPreview(true);
+  };
+
+  const handleClosePreview = () => setShowPreview(false);
+
+  const handleDownload = (image: string, name: string) => {
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = name || `converted.${formatString}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <div className="container">
-      {/* Previous JSX remains */}
-      <button onClick={handleConversion} disabled={loading}>
-        Convert All
-      </button>
-      <div>Progress: {progress}%</div>
+      {error && <div className="alert alert-danger text-center">{error}</div>}
+
+      <input
+        type="file"
+        multiple
+        onChange={handleFileChange}
+      />
+
+      {filePreviews && (
+        <div>
+          {Array.from(filePreviews.entries()).map(([fileName, fileUrl], index) => (
+            <div key={index}>
+              <h5>{fileName}</h5>
+              <button
+                onClick={() =>
+                  handlePreviewClick(
+                    fileUrl,
+                    fileName,
+                    convertedImages?.has(fileName) || false,
+                    convertedImages?.get(fileName) || ""
+                  )
+                }
+              >
+                Preview
+              </button>
+              <button
+                onClick={() => handleDownload(
+                  convertedImages?.get(fileName) || fileUrl,
+                  fileName
+                )}
+              >
+                Download
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <Modal show={showPreview} onHide={handleClosePreview} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Image Preview</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>{previewName}</h5>
+          {previewImage && (
+            <img 
+              src={previewImage} 
+              alt="Preview" 
+              style={{ maxWidth: '100%', height: 'auto' }} 
+            />
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClosePreview}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => previewImage && handleDownload(previewImage, previewName || '')}
+          >
+            Download
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
+
+export default ImageConverter;
