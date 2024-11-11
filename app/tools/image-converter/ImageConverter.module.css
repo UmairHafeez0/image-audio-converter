@@ -1,0 +1,68 @@
+.converterContainer {
+    padding: 20px;
+  }
+  
+  .previewContainer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .imagePreview {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .convertButton {
+    display: block;
+    width: 100%;
+  }
+  
+  .progressBar {
+    margin-top: 10px;
+  }
+  
+  .result {
+    text-align: center;
+  }
+  
+  .formatLinks {
+    margin-top: 40px;
+  }
+  
+  .linksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .formatLink {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+  }
+  
+  .formatLink:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .heading-text {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #ffffff; /* White text to stand out on gradient background */
+    background: linear-gradient(90deg, #1e3c72, #2a5298); /* Blue gradient */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-transform: uppercase;
+  }
+  
