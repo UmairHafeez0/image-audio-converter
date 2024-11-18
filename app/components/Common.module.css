@@ -1,0 +1,46 @@
+/* General link styling for "Our Services" and "Powerful API" */
+.text-dark {
+    color: #0d6efd; /* Stylish blue color */
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .text-dark:hover {
+    color: #084298; /* Darker blue on hover */
+    transform: translateX(5px); /* Subtle right slide effect on hover */
+  }
+  
+  /* Adding hover effect for links */
+  .list-unstyled li {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .list-unstyled li:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  }
+  
+  /* Link headings styling */
+  .display-6 {
+    color: #495057; /* Muted but elegant heading color */
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .list-unstyled li {
+      font-size: 1.1rem;
+      padding: 10px;
+    }
+  
+    .display-6 {
+      font-size: 1.5rem;
+    }
+  }
+  
