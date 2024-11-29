@@ -6,17 +6,5 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 This web application is designed to **convert image and audio files** between various popular formats. Built with Next.js, it aims to provide a fast, modern, and user-friendly interface for everyday file conversions.
 
-> ⚠️ **Note:** Development is currently paused due to prioritization of other ongoing projects. The backend server is private and not publicly accessible at this time.
+> ⚠️ **Note:** The project is currently partially functional and on hold as we are focusing on other high-priority projects. While some core features may work, development and backend access are paused for the time being. The backend server remains private and is not publicly accessible.
 
-## 🚀 Getting Started
-
-To run the development server locally:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
